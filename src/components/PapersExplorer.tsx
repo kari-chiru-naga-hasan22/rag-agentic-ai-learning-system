@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { papersData } from '../data/papersData';
 import { ResearchPaper } from '../types/curriculum';
+import { MathView } from './MathView';
 import { BookOpen, Search, ExternalLink, Filter, Calendar, Award, AlertCircle, Zap } from 'lucide-react';
 
 export const PapersExplorer: React.FC = () => {
@@ -142,9 +143,11 @@ export const PapersExplorer: React.FC = () => {
 
           {/* Section 2: Key Equation */}
           {selectedPaper.keyEquation && (
-            <div className="bg-slate-900 text-slate-100 p-4 rounded-xl font-mono text-xs space-y-1.5 overflow-x-auto">
-              <span className="text-slate-400 text-[10px] uppercase font-bold tracking-wider">// Canonical Equation</span>
-              <div className="text-emerald-400 text-sm py-1 font-semibold">{selectedPaper.keyEquation}</div>
+            <div className="bg-slate-900 text-slate-100 p-4 rounded-xl space-y-2">
+              <span className="text-slate-400 text-[10px] uppercase font-bold tracking-wider">// Canonical Mathematical Formulation</span>
+              <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 text-emerald-300 text-sm overflow-x-auto">
+                <MathView math={selectedPaper.keyEquation} block={true} />
+              </div>
             </div>
           )}
 

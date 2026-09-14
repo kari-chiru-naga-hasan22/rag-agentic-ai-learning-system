@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { curriculumData } from '../data/curriculumData';
 import { Module } from '../types/curriculum';
+import { MathView } from './MathView';
 import {
   BookOpen,
   Code2,
@@ -313,23 +314,26 @@ export const ModuleView: React.FC<ModuleViewProps> = ({
 
               {/* Mathematical formulation if present */}
               {currentModule.theory.mathematics && (
-                <div className="bg-slate-900 text-slate-100 p-4 rounded-xl space-y-3 font-mono">
+                <div className="bg-slate-900 text-slate-100 p-5 rounded-xl space-y-3">
                   <div className="text-slate-400 text-[10px] uppercase font-bold tracking-wider">// Mathematical Formulation</div>
-                  <div className="text-emerald-400 text-sm font-bold bg-slate-950 p-2.5 rounded border border-slate-800 overflow-x-auto">
-                    {currentModule.theory.mathematics.formula}
+                  <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 overflow-x-auto text-emerald-300 text-base">
+                    <MathView math={currentModule.theory.mathematics.formula} block={true} />
                   </div>
-                  <div className="space-y-1 text-slate-300 text-[11px]">
-                    <span className="text-slate-400 font-bold">Variable Legend:</span>
+                  <div className="space-y-1.5 text-slate-300 text-xs pt-1">
+                    <span className="text-slate-400 font-bold uppercase text-[10px]">Variable Legend:</span>
                     {currentModule.theory.mathematics.variables.map((v, idx) => (
-                      <div key={idx} className="flex space-x-2">
-                        <span className="text-indigo-300 font-semibold">{v.name}:</span>
+                      <div key={idx} className="flex items-center space-x-2">
+                        <span className="text-indigo-300 font-semibold bg-slate-800 px-2 py-0.5 rounded text-xs">
+                          <MathView math={v.name} />
+                        </span>
                         <span>{v.desc}</span>
                       </div>
                     ))}
                   </div>
                   {currentModule.theory.mathematics.derivation && (
-                    <div className="pt-2 border-t border-slate-800 text-slate-400 text-[11px]">
-                      <strong>Derivation Note:</strong> {currentModule.theory.mathematics.derivation}
+                    <div className="pt-2 border-t border-slate-800 text-slate-300 text-xs">
+                      <strong className="text-slate-400 font-semibold">Derivation Note: </strong>
+                      <span>{currentModule.theory.mathematics.derivation}</span>
                     </div>
                   )}
                 </div>

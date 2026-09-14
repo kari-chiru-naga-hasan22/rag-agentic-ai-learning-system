@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw, ChevronRight, ChevronLeft, Bot, Terminal, CheckCircle2, AlertOctagon, Sparkles } from 'lucide-react';
+import { MathView } from './MathView';
 
 interface Step {
   stepIndex: number;
@@ -383,14 +384,14 @@ export const ReActSimulator: React.FC = () => {
               <Sparkles className="w-4 h-4 text-indigo-600" />
               <span>POMDP Mathematical State</span>
             </h4>
-            <div className="font-mono space-y-1 text-slate-700 bg-white p-3 rounded border border-slate-200">
-              <div>S_t = Environment Ground Truth</div>
-              <div>O_t = Tool Return Output</div>
-              <div>H_t = [q, t_1, a_1, o_1, ..., t_k]</div>
-              <div>a_(t+1) ~ π(a | H_t, θ_LLM)</div>
+            <div className="space-y-1.5 text-slate-800 bg-white p-3 rounded-lg border border-slate-200 text-xs">
+              <div><MathView math="S_t" /> = Environment Ground Truth</div>
+              <div><MathView math="O_t" /> = Tool Return Output</div>
+              <div><MathView math="H_t = [q, t_1, a_1, o_1, \dots, t_k]" /></div>
+              <div><MathView math="a_{t+1} \sim \pi(a \mid H_t; \theta_{\text{LLM}})" /></div>
             </div>
             <p className="text-slate-600 leading-relaxed">
-              Unlike a pure Markov Decision Process (MDP) where full system state is visible, LLM agents operate under <strong>Partial Observability (POMDP)</strong>. The agent constructs beliefs solely from its historical context buffer $H_t$.
+              Unlike a pure Markov Decision Process (MDP) where full system state is visible, LLM agents operate under <strong>Partial Observability (POMDP)</strong>. The agent constructs beliefs solely from its historical context buffer <MathView math="H_t" />.
             </p>
           </div>
 
