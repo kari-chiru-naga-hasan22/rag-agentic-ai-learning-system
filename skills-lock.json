@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "json-render-generative-ui": {
+      "source": "reason-machines/trending-skills",
+      "sourceType": "github",
+      "skillPath": "skills/json-render-generative-ui/SKILL.md",
+      "computedHash": "4e759ace3c3fcecc4e7b9f846a6e433111bfbd03b42c38cd970070eb721d5db6"
+    }
+  }
+}
